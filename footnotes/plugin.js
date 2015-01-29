@@ -42,12 +42,12 @@ CKEDITOR.plugins.add( 'footnotes', {
 
             // Prevent no selection errors:
             if (!evt.editor.getSelection().getStartElement()) {
-                return;
+                return true;
             }
             // Don't reorder the markers if editing a cite:
             var footnote_section = evt.editor.getSelection().getStartElement().getAscendant('section');
             if (footnote_section && footnote_section.$.className.indexOf('footnotes') != -1) {
-                return;
+                return true;
             }
             // SetTimeout seems to be necessary (it's used in the core but can't be 100% sure why)
             setTimeout(function(){
